@@ -75,8 +75,7 @@ for i=1:blocks_h
         block_tmp = blocks{i,j};
         % rebuild image from block or from defectious block
         if(distance(i,j) > alpha)
-            block_defect(2:block_size-1, 2:block_size-1) = block_tmp(2:block_size-1, 2:block_size-1);
-            marked_img(i_img:i_img+block_size-1, j_img:j_img+block_size-1) = block_defect;
+            marked_img(i_img:i_img+block_size-1, j_img:j_img+block_size-1) = block_tmp(1:block_size, 1:block_size);
         end
         
         if(overlap)

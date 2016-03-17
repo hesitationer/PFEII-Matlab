@@ -28,7 +28,7 @@ for i=1:blocks_h
         s_tmp     = extr_signature_Kim(block_tmp, block_size, block_size);
         
         % distance de Manhattan entre les deux signatures
-        distance(i,j) = sum( abs(s_ref - s_tmp) )/mean(s_tmp);
+        distance(i,j) = mean( abs(s_ref - s_tmp) );
         
         if(block_min_value > min(block_tmp(:)))
             block_min_value = min(block_tmp(:));
@@ -62,8 +62,7 @@ for i=1:blocks_h
         block_tmp = blocks{i,j};
         % reconstruction de l'image a partir d'un block marqué ou non
         if(distance(i,j) > alpha)
-            block_defect(2:block_size-1, 2:block_size-1) = block_tmp(2:block_size-1, 2:block_size-1);
-            marked_img(i_img:i_img+block_size-1, j_img:j_img+block_size-1) = block_defect;
+            marked_img(i_img:i_img+block_size-1, j_img:j_img+block_size-1) = block_tmp(1:block_size, 1:block_size);
         end
         
         if(overlap)
