@@ -34,10 +34,6 @@ for i=1:blocks_h
     for j=1:blocks_w
         block_tmp = blocks{i,j};
         
-%         if(~normalize)
-%             block_tmp = double(block_tmp) - 128;
-%         end
-        
         s_tmp = extr_signature_Sign(block_tmp, block_size, block_size, sign_size);
         distance(i,j) = sum( (s_ref-s_tmp)~= 0)/double(sign_size);
         

@@ -28,7 +28,7 @@ for i=1:blocks_h
         s_tmp     = extr_signature_Kim(block_tmp, block_size, block_size);
         
         % distance de Manhattan entre les deux signatures
-        distance(i,j) = mean( abs(s_ref - s_tmp) );
+        distance(i,j) = sum(abs(s_ref - s_tmp));
         
         if(block_min_value > min(block_tmp(:)))
             block_min_value = min(block_tmp(:));

@@ -8,7 +8,7 @@
 % par ordre décroissant pour donner la signature ordinale
 % ou signature de Kim. 
 
-function [signature] = extr_signature_Ordinale(im,lig,col)
+function [signature] = extr_signature_Kim(im,lig,col)
 
 % im: image ou bloc de luminance en double
 % lig, col: nombre de lignes et de colonnes de im

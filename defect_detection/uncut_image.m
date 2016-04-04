@@ -21,22 +21,10 @@ end
 
 img(1:img_h, 1:img_w) = 0; % initiation de l'image rapide
 
-i_img = 1;
-j_img = 1; % image iterators - growing by n_bloc at each step
-
-% si on a utilise le recouvrement, on ignore les blocs de recouvrement
-% lors de la reconstruction
-step = 1;
-if(overlap)
-    step = 2;
-end
-
-for i=1:step:bloc_h
-    for j=1:step:bloc_w
-        img(i_img: i_img-1+n_block, j_img: j_img-1+n_block) = blocs{i,j};
-        j_img = j_img + n_block;
+for i = 1:bloc_h
+    for j = 1:bloc_w
+        img( (i-1)*n_block+1: i*n_block, (j-1)*n_block+1: j*n_block) = blocs{i,j};
     end
-    i_img = i_img + n_block;
-    j_img = 1;
 end
+
 end

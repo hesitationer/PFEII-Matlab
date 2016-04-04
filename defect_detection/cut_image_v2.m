@@ -36,12 +36,10 @@ if(overlap)
     step = ceil(n_block/2);
 end
 
-for i = 1:step:img_height-n_block+1
-    n = 1;
-    for j = 1:step:img_width-n_block+1
-        blocks{m,n} = img(i:(i-1+n_block), j:(j-1+n_block));
-        n = n+1;
+for i = 1:h_blocks
+    for j =1:w_blocks
+        blocks{i,j} = img( (i-1)*n_block+1: i*n_block, (j-1)*n_block+1: j*n_block);
     end
-    m = m+1;
 end
+
 end
