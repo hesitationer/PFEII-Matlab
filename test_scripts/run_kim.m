@@ -1,10 +1,10 @@
 % image signatures functions path
 addpath(genpath('..'));
 
-block_size = 64;    % taille d'un bloc image
+block_size = 32;    % taille d'un bloc image
 normalize  = false; % normaliser l'image ou pas
 overlap    = false; % recouvrement
-eta        = 2.5;     % TBD
+eta        = 4;     % TBD
 
 free_img = cut_image_v2('../textile_images/Free/1.TIF', block_size, overlap, normalize);
 s_ref    = extr_signature_Kim(free_img{1,1}, block_size, block_size);

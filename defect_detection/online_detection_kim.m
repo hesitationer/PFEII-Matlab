@@ -17,9 +17,6 @@ function [ marked_img ] = online_detection_kim( blocks, block_size, s_ref, eta, 
 block_tmp(1:block_size, 1:block_size) = 0;
 distance(1:blocks_h, 1:blocks_w)     = 0;
 
-% garde en mémoire la valeur minimale de l'image pour l'encadrement en noir
-block_min_value = 255;
-
 % pour chaque bloc, extraction de la signature de Kim et calcul de la
 % distance avec la signature de référence
 for i=1:blocks_h
@@ -29,18 +26,11 @@ for i=1:blocks_h
         
         % distance de Manhattan entre les deux signatures
         distance(i,j) = sum(abs(s_ref - s_tmp));
-        
-        if(block_min_value > min(block_tmp(:)))
-            block_min_value = min(block_tmp(:));
-        end
     end
 end
 
 % calcul du seuil
 alpha = median(distance(:)) + (eta * iqr(distance(:)));
-
-% motif d'un bloc défectueu
-block_defect(1:block_size, 1:block_size) = block_min_value;
 
 % matrice image finale, si on utilise le recouvrement, on retranche à la
 % taille de l'image l'excédant créé par le nombre de bloc de recouvrement

@@ -21,6 +21,7 @@ function [signature] = extr_signature_Kim(im,lig,col)
 Bl = floor(lig / 8);  % Taille d'un bloc en lignes (doit être entier) 
 Bc = floor(col / 8);  % Taille d'un bloc en colonnes (doit être entier) 
 taille = Bl * Bc;
+moy(1:8, 1:8) = 0;
 
 % Pour chaque bloc de l'image, extraire sa valeur moyenne, on obtient 8x8
 % moyennes 
